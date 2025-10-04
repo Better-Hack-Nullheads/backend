@@ -11,7 +11,7 @@ import { CustomerserviceService } from './customer-service.service';
 import { CreateCustomerserviceDto } from './dto/create-customer.dto';
 import { UpdateCustomerserviceDto } from './dto/update-customer.dto';
 
-@Controller('playground')
+@Controller('Customerservice')
 export class CustomerserviceController {
   constructor(private readonly playgroundService: CustomerserviceService) {}
 
