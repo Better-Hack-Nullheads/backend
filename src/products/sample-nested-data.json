@@ -1,0 +1,22 @@
+{
+  "name": "Sample Product with Deep Nesting",
+  "description": "A product demonstrating 5-level deep nesting",
+  "price": 99.99,
+  "category": "Electronics",
+  "deepNestedData": {
+    "level2": {
+      "level3": {
+        "level4": {
+          "level5": {
+            "value": "This is the deepest level value",
+            "timestamp": "2024-01-15T10:30:00.000Z",
+            "metadata": {
+              "source": "manufacturing-system",
+              "version": "1.2.3"
+            }
+          }
+        }
+      }
+    }
+  }
+}

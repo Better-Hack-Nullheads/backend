@@ -18,13 +18,13 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "docs": "auto-doc-gen export src --config autodocgen.config.json",
+    "docs": "auto-doc-gen export src",
     "docs:analyze": "auto-doc-gen analyze src",
-    "docs:info": "auto-doc-gen info src",
-    "docs:export": "auto-doc-gen export src --config autodocgen.config.json",
-    "docs:all": "auto-doc-gen export-all src --config autodocgen.config.json"
+    "docs:save": "auto-doc-gen save src",
+    "docs:config": "auto-doc-gen config"
   },
   "dependencies": {
+    "@auto-doc-gen/core": "file:../auto-doc-gen/auto-doc-gen-core-1.0.0.tgz",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/mapped-types": "^2.1.0",

@@ -1,0 +1,35 @@
+{
+  "// AutoDocGen Configuration File": "Edit this file to customize settings",
+  "// Environment Variables": "You can also use environment variables to override these settings",
+  "// Database Environment Variables": [
+    "AUTODOCGEN_DB_TYPE - Database type (default: mongodb)",
+    "AUTODOCGEN_DB_URL - Database connection URL",
+    "AUTODOCGEN_DB_NAME - Database name"
+  ],
+  "// JSON Export Environment Variables": [
+    "AUTODOCGEN_OUTPUT_DIR - Output directory for JSON files",
+    "AUTODOCGEN_FILENAME - Default filename for exports",
+    "AUTODOCGEN_FORMAT - Output format (json or json-pretty)"
+  ],
+  "// Analysis Environment Variables": [
+    "AUTODOCGEN_INCLUDE_PRIVATE - Include private methods (true/false)",
+    "AUTODOCGEN_VERBOSE - Show verbose output (true/false)",
+    "AUTODOCGEN_COLOR_OUTPUT - Enable colored output (true/false)"
+  ],
+  "// Priority": "CLI options > Environment variables > Config file > Defaults",
+  "database": {
+    "type": "mongodb",
+    "url": "mongodb://localhost:27017/api_docs",
+    "database": "api_docs"
+  },
+  "json": {
+    "outputDir": "./docs",
+    "filename": "analysis.json",
+    "format": "json-pretty"
+  },
+  "analysis": {
+    "includePrivate": false,
+    "verbose": false,
+    "colorOutput": true
+  }
+}

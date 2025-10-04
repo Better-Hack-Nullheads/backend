@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 
+// Level 5 - Deepest nested structure (one field only)
 export interface Product {
   id: string;
   name: string;
@@ -10,6 +11,23 @@ export interface Product {
   category: string;
   createdAt: Date;
   updatedAt: Date;
+  // This is the ONE deeply nested field with 5 levels
+  deepNestedData: {
+    level2: {
+      level3: {
+        level4: {
+          level5: {
+            value: string;
+            timestamp: Date;
+            metadata: {
+              source: string;
+              version: string;
+            };
+          };
+        };
+      };
+    };
+  };
 }
 
 @Injectable()
@@ -24,7 +42,7 @@ export class ProductsService {
       createdAt: new Date(),
       updatedAt: new Date(),
     };
-    
+
     this.nextId++;
     this.products.push(product);
     return product;
@@ -35,12 +53,14 @@ export class ProductsService {
   }
 
   findOne(id: string): Product | undefined {
-    return this.products.find(product => product.id === id);
+    return this.products.find((product) => product.id === id);
   }
 
   update(id: string, updateProductDto: UpdateProductDto): Product | undefined {
-    const productIndex = this.products.findIndex(product => product.id === id);
-    
+    const productIndex = this.products.findIndex(
+      (product) => product.id === id,
+    );
+
     if (productIndex === -1) {
       return undefined;
     }
@@ -55,8 +75,10 @@ export class ProductsService {
   }
 
   remove(id: string): boolean {
-    const productIndex = this.products.findIndex(product => product.id === id);
-    
+    const productIndex = this.products.findIndex(
+      (product) => product.id === id,
+    );
+
     if (productIndex === -1) {
       return false;
     }
