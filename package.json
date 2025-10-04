@@ -25,7 +25,6 @@
     "docs:all": "auto-doc-gen export-all src --config autodocgen.config.json"
   },
   "dependencies": {
-    "@auto-doc-gen/core": "file:../auto-doc-gen",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/mapped-types": "^2.1.0",
