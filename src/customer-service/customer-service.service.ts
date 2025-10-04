@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePlaygroundDto } from './dto/create-playground.dto';
-import { UpdatePlaygroundDto } from './dto/update-playground.dto';
+import { CreateCustomerserviceDto } from './dto/create-customer.dto';
+import { UpdateCustomerserviceDto } from './dto/update-customer.dto';
 
 @Injectable()
-export class PlaygroundService {
-  create(createPlaygroundDto: CreatePlaygroundDto) {
+export class CustomerserviceService {
+  create(createCustomerserviceDto: CreateCustomerserviceDto) {
     return 'This action adds a new playground';
   }
 
@@ -16,7 +16,7 @@ export class PlaygroundService {
     return `This action returns a #${id} playground`;
   }
 
-  update(id: number, updatePlaygroundDto: UpdatePlaygroundDto) {
+  update(id: number, updateCustomerserviceDto: UpdateCustomerserviceDto) {
     return `This action updates a #${id} playground`;
   }
 
