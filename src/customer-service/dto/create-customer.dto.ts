@@ -9,7 +9,7 @@ export class CreateCustomerserviceDto {
   readonly email: string;
 
   @IsOptional()
-  @IsPhoneNumber(null)
+  @IsPhoneNumber()
   readonly phone?: string;
 
   @IsOptional()

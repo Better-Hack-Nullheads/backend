@@ -11,13 +11,13 @@ import { CustomerserviceService } from './customer-service.service';
 import { CreateCustomerserviceDto } from './dto/create-customer.dto';
 import { UpdateCustomerserviceDto } from './dto/update-customer.dto';
 
-@Controller('Customerservice')
+@Controller('customerservice')
 export class CustomerserviceController {
   constructor(private readonly playgroundService: CustomerserviceService) {}
 
   @Post()
-  create(@Body() createPlaygroundDto: CreateCustomerserviceDto) {
-    return this.playgroundService.create(createPlaygroundDto);
+  create(@Body() createCustomerserviceDto: CreateCustomerserviceDto) {
+    return this.playgroundService.create(createCustomerserviceDto);
   }
 
   @Get()
