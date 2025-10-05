@@ -46,6 +46,10 @@ export class DocumentService {
       .exec();
   }
 
+  async getDocumentById(id: string): Promise<Documentation | null> {
+    return this.documentationModel.findById(id).exec();
+  }
+
   async updateDocumentContent(
     id: string,
     content: string,

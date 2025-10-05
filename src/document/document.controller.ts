@@ -40,6 +40,17 @@ export class DocumentController {
     return this.documentService.getDocumentsByChunkTime(chunkTime);
   }
 
+  @Get(':id')
+  async getDocumentById(@Param('id') id: string) {
+    const document = await this.documentService.getDocumentById(id);
+
+    if (!document) {
+      throw new NotFoundException(`Document with ID ${id} not found`);
+    }
+
+    return document;
+  }
+
   @Patch(':id/content')
   async updateDocumentContent(
     @Param('id') id: string,
