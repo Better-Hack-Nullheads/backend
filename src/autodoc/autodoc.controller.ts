@@ -40,7 +40,6 @@ export class AutodocController {
         }
        
       });
-       console.log(user)
 
       return { 
         success: true, 
