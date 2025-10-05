@@ -20,7 +20,7 @@ export class Documentation {
   @Prop({ required: true })
   timestamp: Date;
 
-  @Prop()
+  @Prop({ type: Object })
   metadata: any;
 
   @Prop()

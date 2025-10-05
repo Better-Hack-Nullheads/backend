@@ -1,0 +1,538 @@
+{
+  "framework": "nestjs",
+  "routes": [
+    {
+      "path": "latest",
+      "method": "GET",
+      "handler": "getLatestDocuments",
+      "middleware": [],
+      "parameters": [
+        {
+          "name": "req",
+          "type": "Request",
+          "optional": false
+        },
+        {
+          "name": "res",
+          "type": "Response",
+          "optional": false
+        },
+        {
+          "name": "next",
+          "type": "NextFunction",
+          "optional": true
+        }
+      ],
+      "framework": "nestjs"
+    }
+  ],
+  "controllers": [
+    {
+      "name": "AppController",
+      "routes": [
+        {
+          "path": "/",
+          "method": "GET",
+          "handler": "getHello",
+          "middleware": [],
+          "parameters": [],
+          "framework": "nestjs"
+        }
+      ],
+      "framework": "nestjs",
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/app.controller.ts"
+    },
+    {
+      "name": "CustomerserviceController",
+      "routes": [
+        {
+          "path": "/customerservice",
+          "method": "POST",
+          "handler": "create",
+          "middleware": [],
+          "parameters": [
+            {
+              "name": "createCustomerserviceDto",
+              "type": "CreateCustomerserviceDto",
+              "optional": false,
+              "decorator": "Body"
+            }
+          ],
+          "framework": "nestjs"
+        },
+        {
+          "path": "/customerservice",
+          "method": "GET",
+          "handler": "findAll",
+          "middleware": [],
+          "parameters": [],
+          "framework": "nestjs"
+        },
+        {
+          "path": "/customerservice/:id",
+          "method": "GET",
+          "handler": "findOne",
+          "middleware": [],
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false,
+              "decorator": "Param"
+            }
+          ],
+          "framework": "nestjs"
+        },
+        {
+          "path": "/customerservice/:id",
+          "method": "PATCH",
+          "handler": "update",
+          "middleware": [],
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false,
+              "decorator": "Param"
+            },
+            {
+              "name": "updateCustomerserviceDto",
+              "type": "UpdateCustomerserviceDto",
+              "optional": false,
+              "decorator": "Body"
+            }
+          ],
+          "framework": "nestjs"
+        },
+        {
+          "path": "/customerservice/:id",
+          "method": "DELETE",
+          "handler": "remove",
+          "middleware": [],
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false,
+              "decorator": "Param"
+            }
+          ],
+          "framework": "nestjs"
+        }
+      ],
+      "framework": "nestjs",
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/customer-service/customer-service.controller.ts"
+    },
+    {
+      "name": "DocumentController",
+      "routes": [
+        {
+          "path": "/documents/latest",
+          "method": "GET",
+          "handler": "getLatestDocuments",
+          "middleware": [],
+          "parameters": [
+            {
+              "name": "limit",
+              "type": "string",
+              "optional": true,
+              "decorator": "Query"
+            }
+          ],
+          "framework": "nestjs"
+        },
+        {
+          "path": "/documents/run/:runId",
+          "method": "GET",
+          "handler": "getDocumentsByRunId",
+          "middleware": [],
+          "parameters": [
+            {
+              "name": "runId",
+              "type": "string",
+              "optional": false,
+              "decorator": "Param"
+            }
+          ],
+          "framework": "nestjs"
+        },
+        {
+          "path": "/documents/count",
+          "method": "GET",
+          "handler": "getDocumentCount",
+          "middleware": [],
+          "parameters": [],
+          "framework": "nestjs"
+        }
+      ],
+      "framework": "nestjs",
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/document/document.controller.ts"
+    },
+    {
+      "name": "LlmResponseController",
+      "routes": [
+        {
+          "path": "/llm-response",
+          "method": "POST",
+          "handler": "create",
+          "middleware": [],
+          "parameters": [
+            {
+              "name": "dto",
+              "type": "CreateLlmResponseDto",
+              "optional": false,
+              "decorator": "Body"
+            }
+          ],
+          "framework": "nestjs"
+        },
+        {
+          "path": "/llm-response",
+          "method": "GET",
+          "handler": "findAll",
+          "middleware": [],
+          "parameters": [],
+          "framework": "nestjs"
+        },
+        {
+          "path": "/llm-response/:id",
+          "method": "GET",
+          "handler": "findOne",
+          "middleware": [],
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false,
+              "decorator": "Param"
+            }
+          ],
+          "framework": "nestjs"
+        },
+        {
+          "path": "/llm-response/:id",
+          "method": "PATCH",
+          "handler": "update",
+          "middleware": [],
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false,
+              "decorator": "Param"
+            },
+            {
+              "name": "dto",
+              "type": "UpdateLlmResponseDto",
+              "optional": false,
+              "decorator": "Body"
+            }
+          ],
+          "framework": "nestjs"
+        },
+        {
+          "path": "/llm-response/:id",
+          "method": "DELETE",
+          "handler": "remove",
+          "middleware": [],
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false,
+              "decorator": "Param"
+            }
+          ],
+          "framework": "nestjs"
+        }
+      ],
+      "framework": "nestjs",
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/llm-response/llm-response.controller.ts"
+    }
+  ],
+  "services": [
+    {
+      "name": "AppService",
+      "methods": [
+        {
+          "name": "getHello",
+          "parameters": [],
+          "returnType": "string",
+          "isPublic": true
+        }
+      ],
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/app.service.ts",
+      "framework": "nestjs"
+    },
+    {
+      "name": "CustomerserviceController",
+      "methods": [
+        {
+          "name": "create",
+          "parameters": [
+            {
+              "name": "createCustomerserviceDto",
+              "type": "CreateCustomerserviceDto",
+              "optional": false
+            }
+          ],
+          "returnType": "void",
+          "isPublic": true
+        },
+        {
+          "name": "findAll",
+          "parameters": [],
+          "returnType": "void",
+          "isPublic": true
+        },
+        {
+          "name": "findOne",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            }
+          ],
+          "returnType": "void",
+          "isPublic": true
+        },
+        {
+          "name": "update",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "updateCustomerserviceDto",
+              "type": "UpdateCustomerserviceDto",
+              "optional": false
+            }
+          ],
+          "returnType": "void",
+          "isPublic": true
+        },
+        {
+          "name": "remove",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            }
+          ],
+          "returnType": "void",
+          "isPublic": true
+        }
+      ],
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/customer-service/customer-service.controller.ts",
+      "framework": "nestjs"
+    },
+    {
+      "name": "CustomerserviceService",
+      "methods": [
+        {
+          "name": "create",
+          "parameters": [
+            {
+              "name": "createCustomerserviceDto",
+              "type": "CreateCustomerserviceDto",
+              "optional": false
+            }
+          ],
+          "returnType": "void",
+          "isPublic": true
+        },
+        {
+          "name": "findAll",
+          "parameters": [],
+          "returnType": "void",
+          "isPublic": true
+        },
+        {
+          "name": "findOne",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "number",
+              "optional": false
+            }
+          ],
+          "returnType": "void",
+          "isPublic": true
+        },
+        {
+          "name": "update",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "number",
+              "optional": false
+            },
+            {
+              "name": "updateCustomerserviceDto",
+              "type": "UpdateCustomerserviceDto",
+              "optional": false
+            }
+          ],
+          "returnType": "void",
+          "isPublic": true
+        },
+        {
+          "name": "remove",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "number",
+              "optional": false
+            }
+          ],
+          "returnType": "void",
+          "isPublic": true
+        }
+      ],
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/customer-service/customer-service.service.ts",
+      "framework": "nestjs"
+    },
+    {
+      "name": "DocumentService",
+      "methods": [
+        {
+          "name": "getLatestDocuments",
+          "parameters": [
+            {
+              "name": "limit",
+              "type": "number",
+              "optional": false
+            }
+          ],
+          "returnType": "Promise<Documentation[]>",
+          "isPublic": true
+        },
+        {
+          "name": "getDocumentsByRunId",
+          "parameters": [
+            {
+              "name": "runId",
+              "type": "string",
+              "optional": false
+            }
+          ],
+          "returnType": "Promise<Documentation[]>",
+          "isPublic": true
+        },
+        {
+          "name": "getDocumentCount",
+          "parameters": [],
+          "returnType": "Promise<number>",
+          "isPublic": true
+        }
+      ],
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/document/document.service.ts",
+      "framework": "nestjs"
+    },
+    {
+      "name": "LlmResponseService",
+      "methods": [
+        {
+          "name": "create",
+          "parameters": [
+            {
+              "name": "dto",
+              "type": "CreateLlmResponseDto",
+              "optional": false
+            }
+          ],
+          "returnType": "Promise<LlmResponse>",
+          "isPublic": true
+        },
+        {
+          "name": "findAll",
+          "parameters": [],
+          "returnType": "Promise<LlmResponse[]>",
+          "isPublic": true
+        },
+        {
+          "name": "findOne",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            }
+          ],
+          "returnType": "Promise<LlmResponse>",
+          "isPublic": true
+        },
+        {
+          "name": "update",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            },
+            {
+              "name": "dto",
+              "type": "UpdateLlmResponseDto",
+              "optional": false
+            }
+          ],
+          "returnType": "Promise<LlmResponse>",
+          "isPublic": true
+        },
+        {
+          "name": "remove",
+          "parameters": [
+            {
+              "name": "id",
+              "type": "string",
+              "optional": false
+            }
+          ],
+          "returnType": "Promise<{ deleted: boolean }>",
+          "isPublic": true
+        }
+      ],
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/llm-response/llm-response.service.ts",
+      "framework": "nestjs"
+    },
+    {
+      "name": "CreateCustomerserviceDto",
+      "methods": [],
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/customer-service/dto/create-customer.dto.ts",
+      "framework": "express"
+    },
+    {
+      "name": "UpdateCustomerserviceDto",
+      "methods": [],
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/customer-service/dto/update-customer.dto.ts",
+      "framework": "express"
+    }
+  ],
+  "types": [
+    {
+      "name": "DocumentationDocument",
+      "type": "type",
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/document/schemas/documentation.schema.ts",
+      "properties": []
+    },
+    {
+      "name": "LlmResponseDocument",
+      "type": "type",
+      "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/llm-response/schemas/llm-response.schema.ts",
+      "properties": []
+    }
+  ],
+  "metadata": {
+    "totalRoutes": 23,
+    "totalControllers": 4,
+    "totalServices": 7,
+    "totalTypes": 2,
+    "analysisTime": 4.17,
+    "source": "project-analysis",
+    "moduleName": "latest"
+  }
+}

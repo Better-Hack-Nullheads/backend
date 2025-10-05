@@ -28,4 +28,21 @@ export class DocumentService {
   async getDocumentCount(): Promise<number> {
     return this.documentationModel.countDocuments().exec();
   }
+
+  async getUniqueChunkTimes(): Promise<string[]> {
+    const result = await this.documentationModel
+      .distinct('metadata.chunkTimestamp')
+      .exec();
+    return result
+      .filter((time) => time != null)
+      .sort()
+      .reverse();
+  }
+
+  async getDocumentsByChunkTime(chunkTime: string): Promise<Documentation[]> {
+    return this.documentationModel
+      .find({ 'metadata.chunkTimestamp': chunkTime })
+      .sort({ timestamp: -1 })
+      .exec();
+  }
 }

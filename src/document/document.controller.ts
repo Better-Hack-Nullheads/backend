@@ -20,4 +20,14 @@ export class DocumentController {
   async getDocumentCount() {
     return { count: await this.documentService.getDocumentCount() };
   }
+
+  @Get('chunk-times')
+  async getUniqueChunkTimes() {
+    return this.documentService.getUniqueChunkTimes();
+  }
+
+  @Get('chunk/:chunkTime')
+  async getDocumentsByChunkTime(@Param('chunkTime') chunkTime: string) {
+    return this.documentService.getDocumentsByChunkTime(chunkTime);
+  }
 }

@@ -1,0 +1,31 @@
+### Test Document Endpoints
+
+### Get document count
+GET http://localhost:3000/documents/count
+
+###
+
+### Get latest documents (default limit 10)
+GET http://localhost:3000/documents/latest
+
+###
+
+### Get latest documents with custom limit
+GET http://localhost:3000/documents/latest?limit=5
+
+###
+
+### Get documents by run ID (replace with actual runId from your data)
+GET http://localhost:3000/documents/run/run-2024-01-01-abc123
+
+###
+
+### Get all unique chunk times
+GET http://localhost:3000/documents/chunk-times
+
+###
+
+### Get documents by chunk time (replace with actual chunkTime from chunk-times endpoint)
+GET http://localhost:3000/documents/chunk/2024-01-01T10:30:00.000Z
+
+###
