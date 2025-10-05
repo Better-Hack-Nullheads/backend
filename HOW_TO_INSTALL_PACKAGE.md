@@ -2,10 +2,10 @@
 
 ## Simple Steps
 
-### 1. Install the Package
+### 1. Install the Zipped Package
 
 ```bash
-npm install @auto-doc-gen/universal
+npm install ./auto-doc-gen-universal-1.0.0.tgz
 ```
 
 ### 2. Generate Configuration Files
@@ -14,7 +14,7 @@ npm install @auto-doc-gen/universal
 npm run docs:setup
 ```
 
-### 3. Or Use NPX (No Installation)
+### 3. Or Use NPX Directly
 
 ```bash
 npx auto-doc-gen-universal generate . --save-to-db
@@ -42,12 +42,12 @@ The package will analyze your project and save documentation to the database.
 ## Commands Summary
 
 ```bash
-# Install (optional)
-npm install @auto-doc-gen/universal
+# Install zipped package
+npm install ../auto-doc-gen-universal/auto-doc-gen-universal-1.0.0.tgz
 
 # Generate config files
 npm run docs:setup
 
-# Generate docs (works without install)
+# Generate docs
 npx auto-doc-gen-universal generate . --save-to-db
 ```
