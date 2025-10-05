@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import {  ConfigService } from '@nestjs/config';
 import { LlmResponseModule } from './llm-response/llm-response.module.js';
 import { auth } from './lib/auth.js';
 import { AuthModule } from '@thallesp/nestjs-better-auth';
