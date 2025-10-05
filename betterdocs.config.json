@@ -9,8 +9,8 @@
   "database": {
     "enabled": false,
     "type": "mongodb",
-    "url": "mongodb://localhost:27017/api_docs",
-    "database": "api_docs",
+    "url": "mongodb://localhost:27017/nest_backend",
+    "database": "nest_backend",
     "collections": {
       "documentation": "documentation",
       "endpoints": "endpoints",
