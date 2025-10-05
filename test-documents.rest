@@ -29,3 +29,13 @@ GET http://localhost:3000/documents/chunk-times
 GET http://localhost:3000/documents/chunk/2025-10-05T03:57:20.505Z
 
 ###
+
+### Update document content (replace with actual document ID)
+PATCH http://localhost:3000/documents/{{documentId}}/content
+Content-Type: application/json
+
+{
+  "content": "Updated document content here"
+}
+
+###
