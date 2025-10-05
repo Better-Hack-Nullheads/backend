@@ -26,6 +26,6 @@ GET http://localhost:3000/documents/chunk-times
 ###
 
 ### Get documents by chunk time (replace with actual chunkTime from chunk-times endpoint)
-GET http://localhost:3000/documents/chunk/2024-01-01T10:30:00.000Z
+GET http://localhost:3000/documents/chunk/2025-10-05T03:57:20.505Z
 
 ###
