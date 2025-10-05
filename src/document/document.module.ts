@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { DocumentController } from './document.controller';
-import { DocumentService } from './document.service';
+import { DocumentController } from './document.controller.js';
+import { DocumentService } from './document.service.js';
 import {
   Documentation,
   DocumentationSchema,
-} from './schemas/documentation.schema';
+} from './schemas/documentation.schema.js';
 
 @Module({
   imports: [

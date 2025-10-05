@@ -1,5 +1,5 @@
 import { Controller, Get, Param, Query } from '@nestjs/common';
-import { DocumentService } from './document.service';
+import { DocumentService } from './document.service.js';
 
 @Controller('documents')
 export class DocumentController {
