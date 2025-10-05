@@ -9,244 +9,150 @@ import {
   HttpStatus,
   UnauthorizedException,
   Query,
+  Header,
+  Req,
 } from '@nestjs/common';
 import { auth } from '../lib/auth.js';
 import { AllowAnonymous } from '@thallesp/nestjs-better-auth';
-
+import {fromNodeHeaders} from "better-auth/node";
 @Controller('autodoc')
 export class AutodocController {
   @AllowAnonymous()
   @Post('register')
-  async register(
-    
-    @Body() dto: { email: string; password: string; companyName: string }
-  ) {
+  async register(@Body() dto: {
+    email: string;
+    password: string;
+    projectName: string;
+  }) {
     try {
-      const userResult = await auth.api.signUpEmail({
+      const hasAdmin = await this.hasAdmin();
+      console.log(hasAdmin)
+      const userRole = hasAdmin ? 'user' : 'admin';
+
+      const user = await auth.api.createUser({
         body: {
           email: dto.email,
           password: dto.password,
-          name: dto.companyName,
-        },
+          name: dto.projectName,
+          role:userRole
+          
+          
+        }
+       
       });
+       console.log(user)
 
-      const user = userResult.user;
+      return { 
+        success: true, 
+        message: hasAdmin 
+          ? 'User account created successfully' 
+          : 'Admin account created successfully',
+        role: userRole 
+      };
 
-      const orgResult = await auth.api.createOrganization({
+    } catch (error) {
+      return { 
+        success: false, 
+        message: error.message || 'Registration failed' 
+      };
+    }
+  }
+
+private async hasAdmin(): Promise<boolean> {
+  try {
+    const adminUser = await auth.api.listUsers({
+      query: {
+        filterField: "role",
+        filterValue: "admin",
+        filterOperator: "eq",
+        limit: 1
+      }
+    });
+    
+    if (!adminUser) {
+      console.log('adminUser is null/undefined');
+      return false;
+    }
+    
+    if (!adminUser.users) {
+      console.log('adminUser.users is null/undefined');
+      return false;
+    }
+    
+    console.log('Admin users found:', adminUser.users.length);
+    return adminUser.users.length > 0;
+    
+  } catch (error) {
+    console.error('Error checking for admin:', error);
+    console.error('Full error object:', JSON.stringify(error, null, 2));
+    return false;
+  }
+}
+@AllowAnonymous()
+  @Post('login')
+  async login(
+    @Body() dto: {
+      email: string;
+      password: string;
+    },
+    @Req() req: any,
+    @Res({ passthrough: true }) res: Response
+  ) {
+    try {
+      const session = await auth.api.signInEmail({
         body: {
-          name: dto.companyName,
-          slug: dto.companyName.toLowerCase().replace(/\s+/g, '-'),
-          userId: user.id,
+          email: dto.email,
+          password: dto.password,
         },
-        headers:{}
+        headers: fromNodeHeaders(req.headers)
       });
 
-      const org = orgResult 
-
-      const apiKeyResult = await auth.api.createApiKey({
-        body: {
-          name: `${dto.companyName} Owner Key`,
-          userId: user.id,
-          metadata: {
-            organizationId: org?.id,
-            role: 'owner',
-          },
-          permissions: {
-            endpoints: ['read', 'write', 'delete'],
-          },
-          expiresIn: null,
-          rateLimitEnabled: false,
-        },
-      });
+    
+      
+   
+        const isAdmin = await this.isUserAdmin(session.user.id);
+        const userRole = isAdmin ? 'admin' : 'user';
+    
 
       return {
         success: true,
-        apiKey: apiKeyResult.key,
-        organizationId: org?.id,
-        userId: user.id,
+        message: 'Login successful',
+        session: session.token,
+        user: {
+          id: session.user.id,
+          email: session.user.email,
+          name: session.user.name,
+          role: userRole
+        }
       };
-    } catch (err: any) {
-      console.error('[AutoDoc] Registration error:', err);
-      return {
-        success: false,
-        message: err.message || 'Registration failed',
-      };
+
+    } catch (error) {
+      throw new UnauthorizedException(
+        error.message || 'Invalid email or password'
+      );
     }
   }
 
-  @Post('invite')
-  async inviteMember(
-    @Headers('x-api-key') apiKey: string,
-    @Body() dto: { email: string; role: 'admin' | 'member' }
-  ) {
-    const verification = await auth.api.verifyApiKey({
-      body: { key: apiKey },
-    });
-
-    if (!verification.valid) {
-      throw new UnauthorizedException('Invalid API key');
-    }
-
-    const orgId = verification.key?.metadata?.organizationId;
-
-    const inviteResult = await auth.api.createInvitation({
-      body: {
-        email: dto.email,
-        role: dto.role,
-        organizationId: orgId,
-      },
-    });
-
-    return {
-      success: true,
-      invitationId: inviteResult.id,
-      inviteUrl: `${process.env.FRONTEND_URL}/autodoc/accept-invite?id=${inviteResult.id}`,
-      message: 'Invitation created. Send the invite URL to the user.',
-    };
-  }
-
-  @Get('accept-invite')
-  async showAcceptInvite(
-    @Query('id') invitationId: string,
-    @Res() res: any
-  ) {
-    const inv = await auth.api.getInvitation({
-      query: { id: invitationId },
-      headers:{}
-    });
-
-    if (!inv) {
-      return res
-        .status(HttpStatus.BAD_REQUEST)
-        .send('Invalid or expired invitation');
-    }
-
-    // render your HTML form like before, using inv fields
-    return res.status(HttpStatus.OK).send(`
-      <!DOCTYPE html>
-      <html>
-        <!-- form HTML here (same as your previous) -->
-      </html>
-    `);
-  }
-
-  @Post('accept-invite')
-  async acceptInvite(
-    @Body() dto: {
-      invitationId: string;
-      password: string;
-      name: string;
-      email: string;
-    }
-  ) {
+    private async isUserAdmin(userId: string): Promise<boolean> {
     try {
-      const inv = await auth.api.getInvitation({
-        query: { id: dto.invitationId },
-        headers:{}
+      const users = await auth.api.listUsers({
+        query: {
+          filterField: "id",
+          filterValue: userId,
+          filterOperator: "eq",
+          limit: 1
+        }
       });
-      if (!inv) {
-        return { success: false, message: 'Invalid invitation' };
+
+      if (users && users.users.length > 0) {
+        const user = users.users[0];
+        return user.role === 'admin';
       }
 
-      // Create user
-      const userResult = await auth.api.signUpEmail({
-        body: {
-          email: dto.email,
-          password: dto.password,
-          name: dto.name,
-        },
-      });
-      const user = userResult.user;
-
-      // Accept invitation: passing headers of a authenticated session
-      await auth.api.acceptInvitation({
-        body: { invitationId: dto.invitationId },
-        headers: { authorization: `Bearer ${user.id}` }, // server side style
-      });
-
-      const permissions =
-        inv.role === 'admin'
-          ? { endpoints: ['read', 'write', 'delete'] }
-          : { endpoints: ['read'] };
-
-      const apiKeyResult = await auth.api.createApiKey({
-        body: {
-          name: `${dto.name} ${inv.role} Key`,
-          userId: user.id,
-          metadata: {
-            organizationId: inv.organizationId,
-            role: inv.role,
-          },
-          permissions,
-          expiresIn: null,
-          rateLimitEnabled: false,
-        },
-      });
-
-      return {
-        success: true,
-        apiKey: apiKeyResult.key,
-        role: inv.role,
-        organizationId: inv.organizationId,
-      };
-    } catch (err: any) {
-      console.error('[AutoDoc] Accept invite error:', err);
-      return { success: false, message: err.message };
+      return false;
+    } catch (error) {
+      console.error('Error checking if user is admin:', error);
+      return false;
     }
   }
-
-  @Get('members')
-  async listMembers(@Headers('x-api-key') apiKey: string) {
-    const verification = await auth.api.verifyApiKey({
-      body: { key: apiKey },
-    });
-    if (!verification.valid) {
-      throw new UnauthorizedException('Invalid API key');
-    }
-const orgId = verification.key?.metadata?.organizationId;
-
-if (!orgId) {
-  throw new UnauthorizedException('Organization ID missing in API key metadata');
-}
-
-    const members = await auth.api.listMembers({
-      query: { organizationId: orgId },
-    });
-
-    return { success: true, members };
   }
-
-  @Get('endpoints')
-  async getEndpoints(@Headers('x-api-key') apiKey: string) {
-    const verification = await auth.api.verifyApiKey({
-      body: { key: apiKey, permissions: { endpoints: ['read'] } },
-    });
-    if (!verification.valid) {
-      throw new UnauthorizedException('Invalid API key or insufficient permissions');
-    }
-
-    return {
-      endpoints: [
-        { path: '/users', method: 'GET' },
-        { path: '/users', method: 'POST' },
-      ],
-    };
-  }
-
-  @Post('endpoints/:id/description')
-  async updateDescription(
-    @Headers('x-api-key') apiKey: string,
-    @Body() dto: { description: string }
-  ) {
-    const verification = await auth.api.verifyApiKey({
-      body: { key: apiKey, permissions: { endpoints: ['write'] } },
-    });
-    if (!verification.valid) {
-      throw new UnauthorizedException('Admin access required');
-    }
-
-    // TODO: update description in your own DB or metadata store
-
-    return { success: true, message: 'Description updated' };
-  }
-}

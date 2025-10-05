@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AutodocService } from './autodoc.service';
+import { AutodocService } from './autodoc.service.js';
 
 describe('AutodocService', () => {
   let service: AutodocService;
