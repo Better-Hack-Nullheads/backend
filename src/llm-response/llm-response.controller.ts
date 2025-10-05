@@ -7,9 +7,9 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
-import { LlmResponseService } from './llm-response.service';
-import { CreateLlmResponseDto } from './dto/create-llm-response.dto';
-import { UpdateLlmResponseDto } from './dto/update-llm-response.dto';
+import { LlmResponseService } from './llm-response.service.js';
+import { CreateLlmResponseDto } from './dto/create-llm-response.dto.js';
+import { UpdateLlmResponseDto } from './dto/update-llm-response.dto.js';
 
 @Controller('llm-response')
 export class LlmResponseController {
