@@ -30,16 +30,16 @@ export class CustomerserviceController {
     return this.playgroundService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateCustomerserviceDto: UpdateCustomerserviceDto,
-  ) {
-    return this.playgroundService.update(+id, updateCustomerserviceDto);
-  }
+  // @Patch(':id')
+  // update(
+  //   @Param('id') id: string,
+  //   @Body() updateCustomerserviceDto: UpdateCustomerserviceDto,
+  // ) {
+  //   return this.playgroundService.update(+id, updateCustomerserviceDto);
+  // }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.playgroundService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.playgroundService.remove(+id);
+  // }
 }
