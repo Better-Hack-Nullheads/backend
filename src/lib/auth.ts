@@ -1,4 +1,4 @@
-// src/lib/auth.ts
+import 'dotenv/config';
 import { betterAuth } from 'better-auth';
 import { organization, apiKey } from 'better-auth/plugins';
 import { createAccessControl } from 'better-auth/plugins/access';
@@ -13,9 +13,9 @@ const dbFile = path.join(autodocDir, 'auth.sqlite');
 if (!fs.existsSync(autodocDir)) {
   fs.mkdirSync(autodocDir, { recursive: true });
 }
-const mongoUri = process.env.Mongo_Client;
+const mongoUri = process.env.MONGO_URI;
 if (!mongoUri) {
-  throw new Error('Mongo_Client environment variable is not defined');
+  throw new Error('MONGO_URI environment variable is not defined');
 }
 
 const client = new MongoClient(mongoUri);
