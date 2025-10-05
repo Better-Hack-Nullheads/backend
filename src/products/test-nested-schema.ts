@@ -45,3 +45,4 @@ updateDeepestValue(sampleProduct, 'Updated deep value');
 console.log('Updated value:', getDeepestValue(sampleProduct));
 
 export { getDeepestValue, sampleProduct, updateDeepestValue };
+

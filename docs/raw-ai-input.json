@@ -1,0 +1,1453 @@
+{
+  "timestamp": "2025-10-04T22:53:17.760Z",
+  "provider": "google",
+  "model": "gemini-2.5-flash",
+  "analysisData": {
+    "metadata": {
+      "generatedAt": "2025-10-04T22:39:16.959Z",
+      "version": "2.0.0",
+      "projectPath": "C:\\Users\\LENOVO\\Desktop\\Better-hack\\backend",
+      "analysisTime": 18.737,
+      "totalFiles": 10,
+      "totalControllers": 2,
+      "totalServices": 3,
+      "totalMethods": 17,
+      "totalTypes": 27
+    },
+    "controllers": [
+      {
+        "name": "AppController",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/app.controller.ts",
+        "methods": [
+          {
+            "name": "getHello",
+            "parameters": [],
+            "returnType": "string",
+            "decorators": [
+              "Get"
+            ],
+            "isPublic": true
+          },
+          {
+            "name": "analyzeProject",
+            "parameters": [],
+            "returnType": "void",
+            "decorators": [
+              "Get"
+            ],
+            "isPublic": true
+          },
+          {
+            "name": "getAnalysisResults",
+            "parameters": [],
+            "returnType": "void",
+            "decorators": [
+              "Get"
+            ],
+            "isPublic": true
+          }
+        ]
+      },
+      {
+        "name": "ProductsController",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/products.controller.ts",
+        "methods": [
+          {
+            "name": "create",
+            "parameters": [
+              {
+                "name": "createProductDto",
+                "type": "CreateProductDto",
+                "optional": false,
+                "decorator": "Body"
+              }
+            ],
+            "returnType": "Product",
+            "decorators": [
+              "Post"
+            ],
+            "isPublic": true
+          },
+          {
+            "name": "findAll",
+            "parameters": [],
+            "returnType": "Product[]",
+            "decorators": [
+              "Get"
+            ],
+            "isPublic": true
+          },
+          {
+            "name": "findOne",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "optional": false,
+                "decorator": "Param"
+              }
+            ],
+            "returnType": "Product",
+            "decorators": [
+              "Get"
+            ],
+            "isPublic": true
+          },
+          {
+            "name": "update",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "optional": false,
+                "decorator": "Param"
+              },
+              {
+                "name": "updateProductDto",
+                "type": "UpdateProductDto",
+                "optional": false,
+                "decorator": "Body"
+              }
+            ],
+            "returnType": "Product",
+            "decorators": [
+              "Patch"
+            ],
+            "isPublic": true
+          },
+          {
+            "name": "remove",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "optional": false,
+                "decorator": "Param"
+              }
+            ],
+            "returnType": "{ message: string }",
+            "decorators": [
+              "Delete"
+            ],
+            "isPublic": true
+          }
+        ]
+      }
+    ],
+    "services": [
+      {
+        "name": "AppService",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/app.service.ts",
+        "methods": [
+          {
+            "name": "getHello",
+            "parameters": [],
+            "returnType": "string",
+            "decorators": [],
+            "isPublic": true
+          }
+        ],
+        "properties": []
+      },
+      {
+        "name": "AIService",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/services/ai-service.d.ts",
+        "methods": [
+          {
+            "name": "analyzeProject",
+            "parameters": [
+              {
+                "name": "analysisData",
+                "type": "any",
+                "optional": false
+              }
+            ],
+            "returnType": "Promise<string>",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "getAvailableProviders",
+            "parameters": [],
+            "returnType": "string[]",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "getAvailableModels",
+            "parameters": [
+              {
+                "name": "provider",
+                "type": "string",
+                "optional": false
+              }
+            ],
+            "returnType": "string[]",
+            "decorators": [],
+            "isPublic": true
+          }
+        ],
+        "properties": [
+          {
+            "name": "config",
+            "type": "any",
+            "optional": false
+          },
+          {
+            "name": "createModel",
+            "type": "any",
+            "optional": false
+          },
+          {
+            "name": "buildPrompt",
+            "type": "any",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "ProductsService",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/products.service.ts",
+        "methods": [
+          {
+            "name": "create",
+            "parameters": [
+              {
+                "name": "createProductDto",
+                "type": "CreateProductDto",
+                "optional": false
+              }
+            ],
+            "returnType": "Product",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "findAll",
+            "parameters": [],
+            "returnType": "Product[]",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "findOne",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "optional": false
+              }
+            ],
+            "returnType": "Product | undefined",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "update",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "optional": false
+              },
+              {
+                "name": "updateProductDto",
+                "type": "UpdateProductDto",
+                "optional": false
+              }
+            ],
+            "returnType": "Product | undefined",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "remove",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "optional": false
+              }
+            ],
+            "returnType": "boolean",
+            "decorators": [],
+            "isPublic": true
+          }
+        ],
+        "properties": [
+          {
+            "name": "products",
+            "type": "Product[]",
+            "optional": false
+          },
+          {
+            "name": "nextId",
+            "type": "any",
+            "optional": false
+          }
+        ]
+      }
+    ],
+    "types": [
+      {
+        "name": "AppController",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/app.controller.ts",
+        "properties": [],
+        "methods": [
+          {
+            "name": "getHello",
+            "parameters": [],
+            "returnType": "string",
+            "decorators": [
+              "Get"
+            ],
+            "isPublic": true
+          },
+          {
+            "name": "analyzeProject",
+            "parameters": [],
+            "returnType": "void",
+            "decorators": [
+              "Get"
+            ],
+            "isPublic": true
+          },
+          {
+            "name": "getAnalysisResults",
+            "parameters": [],
+            "returnType": "void",
+            "decorators": [
+              "Get"
+            ],
+            "isPublic": true
+          }
+        ]
+      },
+      {
+        "name": "AppModule",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/app.module.ts",
+        "properties": [],
+        "methods": []
+      },
+      {
+        "name": "AppService",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/app.service.ts",
+        "properties": [],
+        "methods": [
+          {
+            "name": "getHello",
+            "parameters": [],
+            "returnType": "string",
+            "decorators": [],
+            "isPublic": true
+          }
+        ]
+      },
+      {
+        "name": "MongoDBAdapter",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/adapters/mongodb-adapter.d.ts",
+        "properties": [
+          {
+            "name": "client",
+            "type": "any",
+            "optional": false
+          },
+          {
+            "name": "db",
+            "type": "any",
+            "optional": false
+          },
+          {
+            "name": "config",
+            "type": "any",
+            "optional": false
+          }
+        ],
+        "methods": [
+          {
+            "name": "connect",
+            "parameters": [],
+            "returnType": "Promise<void>",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "createCollections",
+            "parameters": [],
+            "returnType": "Promise<void>",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "saveAnalysis",
+            "parameters": [
+              {
+                "name": "analysisData",
+                "type": "any",
+                "optional": false
+              }
+            ],
+            "returnType": "Promise<void>",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "saveDocumentation",
+            "parameters": [
+              {
+                "name": "docData",
+                "type": "any",
+                "optional": false
+              }
+            ],
+            "returnType": "Promise<void>",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "close",
+            "parameters": [],
+            "returnType": "Promise<void>",
+            "decorators": [],
+            "isPublic": true
+          }
+        ]
+      },
+      {
+        "name": "AutoDocGenConfig",
+        "type": "interface",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/config/config-loader.d.ts",
+        "properties": [
+          {
+            "name": "database",
+            "type": "{ type: 'mongodb'; url: string; database: string; }",
+            "optional": false,
+            "nested": {
+              "name": "NestedType",
+              "type": "interface",
+              "filePath": "",
+              "properties": [
+                {
+                  "name": "type",
+                  "type": "'mongodb'",
+                  "optional": false
+                },
+                {
+                  "name": "url",
+                  "type": "string",
+                  "optional": false
+                },
+                {
+                  "name": "database",
+                  "type": "string",
+                  "optional": false
+                }
+              ]
+            }
+          },
+          {
+            "name": "json",
+            "type": "{ outputDir: string; filename: string; format: 'json' | 'json-pretty'; }",
+            "optional": false,
+            "nested": {
+              "name": "NestedType",
+              "type": "interface",
+              "filePath": "",
+              "properties": [
+                {
+                  "name": "outputDir",
+                  "type": "string",
+                  "optional": false
+                },
+                {
+                  "name": "filename",
+                  "type": "string",
+                  "optional": false
+                },
+                {
+                  "name": "format",
+                  "type": "'json' | 'json-pretty'",
+                  "optional": false
+                }
+              ]
+            }
+          },
+          {
+            "name": "analysis",
+            "type": "{ includePrivate: boolean; verbose: boolean; colorOutput: boolean; }",
+            "optional": false,
+            "nested": {
+              "name": "NestedType",
+              "type": "interface",
+              "filePath": "",
+              "properties": [
+                {
+                  "name": "includePrivate",
+                  "type": "boolean",
+                  "optional": false
+                },
+                {
+                  "name": "verbose",
+                  "type": "boolean",
+                  "optional": false
+                },
+                {
+                  "name": "colorOutput",
+                  "type": "boolean",
+                  "optional": false
+                }
+              ]
+            }
+          },
+          {
+            "name": "ai",
+            "type": "AutoDocGenAIConfig",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "ConfigLoader",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/config/config-loader.d.ts",
+        "properties": [
+          {
+            "name": "CONFIG_FILE",
+            "type": "any",
+            "optional": false
+          },
+          {
+            "name": "DEFAULT_CONFIG",
+            "type": "any",
+            "optional": false
+          },
+          {
+            "name": "mergeWithDefaults",
+            "type": "any",
+            "optional": false
+          },
+          {
+            "name": "getEnvOrConfig",
+            "type": "any",
+            "optional": false
+          },
+          {
+            "name": "getApiKeyEnvVar",
+            "type": "any",
+            "optional": false
+          }
+        ],
+        "methods": [
+          {
+            "name": "loadConfig",
+            "parameters": [
+              {
+                "name": "projectPath",
+                "type": "string",
+                "optional": false
+              }
+            ],
+            "returnType": "AutoDocGenConfig",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "createDefaultConfig",
+            "parameters": [
+              {
+                "name": "configPath",
+                "type": "string",
+                "optional": false
+              }
+            ],
+            "returnType": "void",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "extractDatabaseName",
+            "parameters": [
+              {
+                "name": "url",
+                "type": "string",
+                "optional": false
+              }
+            ],
+            "returnType": "string",
+            "decorators": [],
+            "isPublic": true
+          }
+        ]
+      },
+      {
+        "name": "AIService",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/services/ai-service.d.ts",
+        "properties": [
+          {
+            "name": "config",
+            "type": "any",
+            "optional": false
+          },
+          {
+            "name": "createModel",
+            "type": "any",
+            "optional": false
+          },
+          {
+            "name": "buildPrompt",
+            "type": "any",
+            "optional": false
+          }
+        ],
+        "methods": [
+          {
+            "name": "analyzeProject",
+            "parameters": [
+              {
+                "name": "analysisData",
+                "type": "any",
+                "optional": false
+              }
+            ],
+            "returnType": "Promise<string>",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "getAvailableProviders",
+            "parameters": [],
+            "returnType": "string[]",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "getAvailableModels",
+            "parameters": [
+              {
+                "name": "provider",
+                "type": "string",
+                "optional": false
+              }
+            ],
+            "returnType": "string[]",
+            "decorators": [],
+            "isPublic": true
+          }
+        ]
+      },
+      {
+        "name": "AIProvider",
+        "type": "interface",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/types/ai.types.d.ts",
+        "properties": [
+          {
+            "name": "name",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "models",
+            "type": "string[]",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "AIConfig",
+        "type": "interface",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/types/ai.types.d.ts",
+        "properties": [
+          {
+            "name": "provider",
+            "type": "'google' | 'openai' | 'anthropic'",
+            "optional": false
+          },
+          {
+            "name": "model",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "apiKey",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "optional": true
+          },
+          {
+            "name": "maxTokens",
+            "type": "number",
+            "optional": true
+          },
+          {
+            "name": "customPrompt",
+            "type": "string",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "AutoDocGenAIConfig",
+        "type": "interface",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/types/ai.types.d.ts",
+        "properties": [
+          {
+            "name": "enabled",
+            "type": "boolean",
+            "optional": false
+          },
+          {
+            "name": "provider",
+            "type": "'google' | 'openai' | 'anthropic'",
+            "optional": false
+          },
+          {
+            "name": "model",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "apiKey",
+            "type": "string",
+            "optional": true
+          },
+          {
+            "name": "temperature",
+            "type": "number",
+            "optional": true
+          },
+          {
+            "name": "maxTokens",
+            "type": "number",
+            "optional": true
+          },
+          {
+            "name": "outputDir",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "filename",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "templates",
+            "type": "{ default: string; security: string; performance: string; custom?: string; }",
+            "optional": false,
+            "nested": {
+              "name": "NestedType",
+              "type": "interface",
+              "filePath": "",
+              "properties": [
+                {
+                  "name": "default",
+                  "type": "string",
+                  "optional": false
+                },
+                {
+                  "name": "security",
+                  "type": "string",
+                  "optional": false
+                },
+                {
+                  "name": "performance",
+                  "type": "string",
+                  "optional": false
+                },
+                {
+                  "name": "custom",
+                  "type": "string",
+                  "optional": true
+                }
+              ]
+            }
+          },
+          {
+            "name": "providers",
+            "type": "{ google: { models: string[]; defaultModel: string; }; openai: { models: string[]; defaultModel: string; }; anthropic: { models: string[]; defaultModel: string; }; }",
+            "optional": false,
+            "nested": {
+              "name": "NestedType",
+              "type": "interface",
+              "filePath": "",
+              "properties": [
+                {
+                  "name": "google",
+                  "type": "{ models: string[]",
+                  "optional": false
+                },
+                {
+                  "name": "defaultModel",
+                  "type": "string",
+                  "optional": false
+                },
+                {
+                  "name": "openai",
+                  "type": "{ models: string[]",
+                  "optional": false
+                },
+                {
+                  "name": "defaultModel",
+                  "type": "string",
+                  "optional": false
+                },
+                {
+                  "name": "anthropic",
+                  "type": "{ models: string[]",
+                  "optional": false
+                },
+                {
+                  "name": "defaultModel",
+                  "type": "string",
+                  "optional": false
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "AIAnalysis",
+        "type": "type",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/types/ai.types.d.ts",
+        "properties": [
+          {
+            "name": "value",
+            "type": "z.infer<typeof AIAnalysisSchema>",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "SimpleOptions",
+        "type": "interface",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/types/common.types.d.ts",
+        "properties": [
+          {
+            "name": "verbose",
+            "type": "boolean",
+            "optional": false
+          },
+          {
+            "name": "colorOutput",
+            "type": "boolean",
+            "optional": false
+          },
+          {
+            "name": "includePrivate",
+            "type": "boolean",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "AnalysisOptions",
+        "type": "interface",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/types/common.types.d.ts",
+        "properties": [
+          {
+            "name": "includeInterfaces",
+            "type": "boolean",
+            "optional": true
+          },
+          {
+            "name": "includeClasses",
+            "type": "boolean",
+            "optional": true
+          },
+          {
+            "name": "includeEnums",
+            "type": "boolean",
+            "optional": true
+          },
+          {
+            "name": "includeValidationRules",
+            "type": "boolean",
+            "optional": true
+          },
+          {
+            "name": "includeDecorators",
+            "type": "boolean",
+            "optional": true
+          },
+          {
+            "name": "includeImports",
+            "type": "boolean",
+            "optional": true
+          },
+          {
+            "name": "maxDepth",
+            "type": "number",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "ExportOptions",
+        "type": "interface",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/types/common.types.d.ts",
+        "properties": [
+          {
+            "name": "outputPath",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "format",
+            "type": "'json' | 'json-pretty'",
+            "optional": false
+          },
+          {
+            "name": "includeMetadata",
+            "type": "boolean",
+            "optional": true
+          },
+          {
+            "name": "timestamp",
+            "type": "boolean",
+            "optional": true
+          }
+        ]
+      },
+      {
+        "name": "DatabaseConfig",
+        "type": "interface",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/types/database.types.d.ts",
+        "properties": [
+          {
+            "name": "type",
+            "type": "'mongodb'",
+            "optional": false
+          },
+          {
+            "name": "connectionString",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "database",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "mapping",
+            "type": "{ enabled: boolean; createCollections: boolean; includeTypeSchemas: boolean; includeValidationRules: boolean; }",
+            "optional": false,
+            "nested": {
+              "name": "NestedType",
+              "type": "interface",
+              "filePath": "",
+              "properties": [
+                {
+                  "name": "enabled",
+                  "type": "boolean",
+                  "optional": false
+                },
+                {
+                  "name": "createCollections",
+                  "type": "boolean",
+                  "optional": false
+                },
+                {
+                  "name": "includeTypeSchemas",
+                  "type": "boolean",
+                  "optional": false
+                },
+                {
+                  "name": "includeValidationRules",
+                  "type": "boolean",
+                  "optional": false
+                }
+              ]
+            }
+          },
+          {
+            "name": "collections",
+            "type": "{ documentation: string; endpoints: string; types: string; }",
+            "optional": false,
+            "nested": {
+              "name": "NestedType",
+              "type": "interface",
+              "filePath": "",
+              "properties": [
+                {
+                  "name": "documentation",
+                  "type": "string",
+                  "optional": false
+                },
+                {
+                  "name": "endpoints",
+                  "type": "string",
+                  "optional": false
+                },
+                {
+                  "name": "types",
+                  "type": "string",
+                  "optional": false
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DocumentationRecord",
+        "type": "interface",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/auto-doc-gen/dist/types/database.types.d.ts",
+        "properties": [
+          {
+            "name": "content",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "source",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "provider",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "model",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "timestamp",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "metadata",
+            "type": "{ temperature: number; maxTokens: number; }",
+            "optional": false,
+            "nested": {
+              "name": "NestedType",
+              "type": "interface",
+              "filePath": "",
+              "properties": [
+                {
+                  "name": "temperature",
+                  "type": "number",
+                  "optional": false
+                },
+                {
+                  "name": "maxTokens",
+                  "type": "number",
+                  "optional": false
+                }
+              ]
+            }
+          },
+          {
+            "name": "createdAt",
+            "type": "Date",
+            "optional": false
+          },
+          {
+            "name": "updatedAt",
+            "type": "Date",
+            "optional": false
+          }
+        ]
+      },
+      {
+        "name": "ProductsController",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/products.controller.ts",
+        "properties": [],
+        "methods": [
+          {
+            "name": "create",
+            "parameters": [
+              {
+                "name": "createProductDto",
+                "type": "CreateProductDto",
+                "optional": false
+              }
+            ],
+            "returnType": "Product",
+            "decorators": [
+              "Post"
+            ],
+            "isPublic": true
+          },
+          {
+            "name": "findAll",
+            "parameters": [],
+            "returnType": "Product[]",
+            "decorators": [
+              "Get"
+            ],
+            "isPublic": true
+          },
+          {
+            "name": "findOne",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "optional": false
+              }
+            ],
+            "returnType": "Product",
+            "decorators": [
+              "Get"
+            ],
+            "isPublic": true
+          },
+          {
+            "name": "update",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "optional": false
+              },
+              {
+                "name": "updateProductDto",
+                "type": "UpdateProductDto",
+                "optional": false
+              }
+            ],
+            "returnType": "Product",
+            "decorators": [
+              "Patch"
+            ],
+            "isPublic": true
+          },
+          {
+            "name": "remove",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "optional": false
+              }
+            ],
+            "returnType": "{ message: string }",
+            "decorators": [
+              "Delete"
+            ],
+            "isPublic": true
+          }
+        ]
+      },
+      {
+        "name": "ProductsModule",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/products.module.ts",
+        "properties": [],
+        "methods": []
+      },
+      {
+        "name": "Product",
+        "type": "interface",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/products.service.ts",
+        "properties": [
+          {
+            "name": "id",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "optional": true
+          },
+          {
+            "name": "price",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "createdAt",
+            "type": "Date",
+            "optional": false
+          },
+          {
+            "name": "updatedAt",
+            "type": "Date",
+            "optional": false
+          },
+          {
+            "name": "deepNestedData",
+            "type": "{ level2: { level3: { level4: { level5: { value: string; timestamp: Date; metadata: { source: string; version: string; }; }; }; }; }; }",
+            "optional": false,
+            "nested": {
+              "name": "NestedType",
+              "type": "interface",
+              "filePath": "",
+              "properties": [
+                {
+                  "name": "level2",
+                  "type": "{ level3: { level4: { level5: { value: string",
+                  "optional": false
+                },
+                {
+                  "name": "timestamp",
+                  "type": "Date",
+                  "optional": false
+                },
+                {
+                  "name": "metadata",
+                  "type": "{ source: string",
+                  "optional": false
+                },
+                {
+                  "name": "version",
+                  "type": "string",
+                  "optional": false
+                }
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "ProductsService",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/products.service.ts",
+        "properties": [
+          {
+            "name": "products",
+            "type": "Product[]",
+            "optional": false
+          },
+          {
+            "name": "nextId",
+            "type": "any",
+            "optional": false
+          }
+        ],
+        "methods": [
+          {
+            "name": "create",
+            "parameters": [
+              {
+                "name": "createProductDto",
+                "type": "CreateProductDto",
+                "optional": false
+              }
+            ],
+            "returnType": "Product",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "findAll",
+            "parameters": [],
+            "returnType": "Product[]",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "findOne",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "optional": false
+              }
+            ],
+            "returnType": "Product | undefined",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "update",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "optional": false
+              },
+              {
+                "name": "updateProductDto",
+                "type": "UpdateProductDto",
+                "optional": false
+              }
+            ],
+            "returnType": "Product | undefined",
+            "decorators": [],
+            "isPublic": true
+          },
+          {
+            "name": "remove",
+            "parameters": [
+              {
+                "name": "id",
+                "type": "string",
+                "optional": false
+              }
+            ],
+            "returnType": "boolean",
+            "decorators": [],
+            "isPublic": true
+          }
+        ]
+      },
+      {
+        "name": "Level5Dto",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/dto/create-product.dto.ts",
+        "properties": [
+          {
+            "name": "value",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "timestamp",
+            "type": "Date",
+            "optional": false
+          },
+          {
+            "name": "metadata",
+            "type": "{ source: string; version: string; }",
+            "optional": false,
+            "nested": {
+              "name": "NestedType",
+              "type": "interface",
+              "filePath": "",
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "string",
+                  "optional": false
+                },
+                {
+                  "name": "version",
+                  "type": "string",
+                  "optional": false
+                }
+              ]
+            }
+          }
+        ],
+        "methods": []
+      },
+      {
+        "name": "Level4Dto",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/dto/create-product.dto.ts",
+        "properties": [
+          {
+            "name": "level5",
+            "type": "Level5Dto",
+            "optional": false
+          }
+        ],
+        "methods": []
+      },
+      {
+        "name": "Level3Dto",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/dto/create-product.dto.ts",
+        "properties": [
+          {
+            "name": "level4",
+            "type": "Level4Dto",
+            "optional": false
+          }
+        ],
+        "methods": []
+      },
+      {
+        "name": "Level2Dto",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/dto/create-product.dto.ts",
+        "properties": [
+          {
+            "name": "level3",
+            "type": "Level3Dto",
+            "optional": false
+          }
+        ],
+        "methods": []
+      },
+      {
+        "name": "DeepNestedDataDto",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/dto/create-product.dto.ts",
+        "properties": [
+          {
+            "name": "level2",
+            "type": "Level2Dto",
+            "optional": false
+          }
+        ],
+        "methods": []
+      },
+      {
+        "name": "CreateProductDto",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/dto/create-product.dto.ts",
+        "properties": [
+          {
+            "name": "name",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "optional": true
+          },
+          {
+            "name": "price",
+            "type": "number",
+            "optional": false
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "optional": false
+          },
+          {
+            "name": "deepNestedData",
+            "type": "DeepNestedDataDto",
+            "optional": false
+          }
+        ],
+        "methods": []
+      },
+      {
+        "name": "UpdateProductDto",
+        "type": "class",
+        "filePath": "C:/Users/LENOVO/Desktop/Better-hack/backend/src/products/dto/update-product.dto.ts",
+        "properties": [],
+        "methods": []
+      }
+    ]
+  },
+  "promptTemplate": "default",
+  "metadata": {
+    "totalControllers": 2,
+    "totalServices": 3,
+    "totalTypes": 27,
+    "totalMethods": 17
+  }
+}
