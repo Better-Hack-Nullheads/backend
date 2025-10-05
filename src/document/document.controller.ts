@@ -1,5 +1,14 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  NotFoundException,
+  Param,
+  Patch,
+  Query,
+} from '@nestjs/common';
 import { DocumentService } from './document.service.js';
+import { UpdateContentDto } from './dto/update-content.dto.js';
 
 @Controller('documents')
 export class DocumentController {
@@ -29,5 +38,22 @@ export class DocumentController {
   @Get('chunk/:chunkTime')
   async getDocumentsByChunkTime(@Param('chunkTime') chunkTime: string) {
     return this.documentService.getDocumentsByChunkTime(chunkTime);
+  }
+
+  @Patch(':id/content')
+  async updateDocumentContent(
+    @Param('id') id: string,
+    @Body() updateContentDto: UpdateContentDto,
+  ) {
+    const updatedDocument = await this.documentService.updateDocumentContent(
+      id,
+      updateContentDto.content,
+    );
+
+    if (!updatedDocument) {
+      throw new NotFoundException(`Document with ID ${id} not found`);
+    }
+
+    return updatedDocument;
   }
 }

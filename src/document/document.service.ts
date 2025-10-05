@@ -45,4 +45,13 @@ export class DocumentService {
       .sort({ timestamp: -1 })
       .exec();
   }
+
+  async updateDocumentContent(
+    id: string,
+    content: string,
+  ): Promise<Documentation | null> {
+    return this.documentationModel
+      .findByIdAndUpdate(id, { content }, { new: true })
+      .exec();
+  }
 }
