@@ -1,0 +1,14 @@
+# Copy this to .env file in the backend directory
+
+# Database Configuration
+MONGODB_URL=mongodb://localhost:27017/autoDocDb
+
+# AutoDocGen Configuration (for reference)
+AUTODOCGEN_DB_ENABLED=true
+AUTODOCGEN_DB_URL=mongodb://localhost:27017/autoDocDb
+AUTODOCGEN_DB_NAME=autoDocDb
+
+# AI Configuration (for auto-doc-gen)
+GOOGLE_AI_API_KEY=your_key_here
+AUTODOCGEN_AI_PROVIDER=google
+AUTODOCGEN_AI_MODEL=gemini-2.5-flash
