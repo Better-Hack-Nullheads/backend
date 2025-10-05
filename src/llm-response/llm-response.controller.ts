@@ -11,6 +11,7 @@ import { LlmResponseService } from './llm-response.service';
 import { CreateLlmResponseDto } from './dto/create-llm-response.dto';
 import { UpdateLlmResponseDto } from './dto/update-llm-response.dto';
 
+
 @Controller('llm-response')
 export class LlmResponseController {
   constructor(private readonly llmResponseService: LlmResponseService) {}
@@ -32,6 +33,7 @@ export class LlmResponseController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() dto: UpdateLlmResponseDto) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return this.llmResponseService.update(id, dto);
   }
 

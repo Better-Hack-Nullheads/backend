@@ -1,51 +1,41 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import {
-  LlmResponse,
-  LlmResponseDocument,
-} from './schemas/llm-response.schema';
-import { CreateLlmResponseDto } from './dto/create-llm-response.dto';
 import { UpdateLlmResponseDto } from './dto/update-llm-response.dto';
 
 @Injectable()
 export class LlmResponseService {
-  constructor(
-    @InjectModel(LlmResponse.name)
-    private readonly llmResponseModel: Model<LlmResponseDocument>,
-  ) {}
+  private llmResponses: any[] = []; // replace with actual DB or storage
 
-  // Create a new LLM response
-  async create(dto: CreateLlmResponseDto): Promise<LlmResponse> {
-    const created = new this.llmResponseModel(dto);
-    return created.save();
+  create(dto: any) {
+    const id = `${Date.now()}`;
+    const newRecord = { id, ...dto };
+    this.llmResponses.push(newRecord);
+    return newRecord;
   }
 
-  // Get all LLM responses
-  async findAll(): Promise<LlmResponse[]> {
-    return this.llmResponseModel.find().exec();
+  findAll() {
+    return this.llmResponses;
   }
 
-  // Get a single LLM response by ID
-  async findOne(id: string): Promise<LlmResponse> {
-    const doc = await this.llmResponseModel.findById(id).exec();
-    if (!doc) throw new NotFoundException('LLM response not found');
-    return doc;
+  findOne(id: string) {
+    const record = this.llmResponses.find(r => r.id === id);
+    if (!record) throw new NotFoundException(`Record ${id} not found`);
+    return record;
   }
 
-  // Update a LLM response by ID
-  async update(id: string, dto: UpdateLlmResponseDto): Promise<LlmResponse> {
-    const updated = await this.llmResponseModel
-      .findByIdAndUpdate(id, dto, { new: true })
-      .exec();
-    if (!updated) throw new NotFoundException('LLM response not found');
-    return updated;
+  update(id: string, dto: UpdateLlmResponseDto) {
+    const index = this.llmResponses.findIndex(r => r.id === id);
+    if (index === -1) throw new NotFoundException(`Record ${id} not found`);
+
+    // Only update content or any other fields provided
+    this.llmResponses[index] = { ...this.llmResponses[index], ...dto };
+    return this.llmResponses[index];
   }
 
-  // Delete a LLM response by ID
-  async remove(id: string): Promise<{ deleted: boolean }> {
-    const result = await this.llmResponseModel.findByIdAndDelete(id).exec();
-    if (!result) throw new NotFoundException('LLM response not found');
-    return { deleted: true };
+  remove(id: string) {
+    const index = this.llmResponses.findIndex(r => r.id === id);
+    if (index === -1) throw new NotFoundException(`Record ${id} not found`);
+    const removed = this.llmResponses.splice(index, 1);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return removed[0];
   }
 }
