@@ -35,7 +35,7 @@
     "docs:setup": "node setup-autodocgen.js"
   },
   "dependencies": {
-    "@auto-doc-gen/universal": "file:../auto-doc-gen-universal",
+    "@auto-doc-gen/universal": "file:../auto-doc-gen-universal/auto-doc-gen-universal-1.0.0.tgz",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/mapped-types": "^2.1.0",
