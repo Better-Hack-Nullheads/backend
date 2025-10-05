@@ -18,7 +18,7 @@ import { DocumentModule } from './document/document.module.js';
       imports:[ConfigModule],
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
-        uri: config.get<string>('MONGODB_URI') || 'mongodb://localhost:27017/mydb',
+        uri: config.get<string>('MONGODB_URL') || 'mongodb://localhost:27017/mydb',
 
       })
 

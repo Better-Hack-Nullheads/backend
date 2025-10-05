@@ -14,7 +14,7 @@ const dbFile = path.join(autodocDir, 'auth.sqlite');
 if (!fs.existsSync(autodocDir)) {
   fs.mkdirSync(autodocDir, { recursive: true });
 }
-const mongoUri = process.env.MONGO_URI;
+const mongoUri = process.env.MONGODB_URL;
 if (!mongoUri) {
   throw new Error('MONGO_URI environment variable is not defined');
 }
