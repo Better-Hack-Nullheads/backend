@@ -3,20 +3,13 @@ import { IsString, IsEmail, IsOptional, IsPhoneNumber } from 'class-validator';
 
 export class CreateCustomerserviceDto {
   @IsString()
-  readonly name: string;
+  name: string;
 
   @IsEmail()
-  readonly email: string;
+   email: string;
 
   @IsOptional()
   @IsPhoneNumber()
-  readonly phone?: string;
+  phone?: string;
 
-  @IsOptional()
-  @IsString()
-  readonly address?: string;
-
-  @IsOptional()
-  @IsString()
-  readonly notes?: string;
 }
