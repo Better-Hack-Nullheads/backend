@@ -19,7 +19,6 @@ async function bootstrap() {
     .setDescription('API documentation for Better Hack backend')
     .setVersion('1.0')
     .addTag('documents', 'Document management endpoints')
-    .addTag('auth', 'Authentication endpoints')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
