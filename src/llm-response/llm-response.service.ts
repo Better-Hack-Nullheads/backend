@@ -4,9 +4,9 @@ import { Model } from 'mongoose';
 import {
   LlmResponse,
   LlmResponseDocument,
-} from './schemas/llm-response.schema';
-import { CreateLlmResponseDto } from './dto/create-llm-response.dto';
-import { UpdateLlmResponseDto } from './dto/update-llm-response.dto';
+} from './schemas/llm-response.schema.js';
+import { CreateLlmResponseDto } from './dto/create-llm-response.dto.js';
+import { UpdateLlmResponseDto } from './dto/update-llm-response.dto.js';
 
 @Injectable()
 export class LlmResponseService {

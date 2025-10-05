@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { LlmResponseService } from './llm-response.service';
-import { LlmResponseController } from './llm-response.controller';
-import { LlmResponse, LlmResponseSchema } from './schemas/llm-response.schema';
+import { LlmResponseService } from './llm-response.service.js';
+import { LlmResponseController } from './llm-response.controller.js';
+import { LlmResponse, LlmResponseSchema } from './schemas/llm-response.schema.js';
 
 @Module({
   imports: [
